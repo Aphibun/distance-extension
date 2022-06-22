@@ -1,10 +1,11 @@
 Blockly.defineBlocksWithJsonArray([
 {
-  "type": "max90614_object_temp",
-  "message0": "object temperature (°C)",
+        
+  "type": "distance_read",
+  "message0": "Distance (mm)",
   "output": "Number",
   "colour": "#27AE60",
-  "tooltip": "Read object temperature from MLX90614",
+  "tooltip": "Read Distance from VL53L0X",
   "helpUrl": ""
 }
 ]);

@@ -1,6 +1,6 @@
-Blockly.Python['max90614_object_temp'] = function (block) {
-  Blockly.Python.definitions_['import_MLX90614'] = 'import MLX90614';
+Blockly.Python['distance_read'] = function (block) {
+  Blockly.Python.definitions_['import_VL53L0X'] = 'from VL53L0X import VL53L0X \n tof = VL53L0X()\ntof.start()';
 
-  var code = 'MLX90614.readObjectTempC()';
+  var code = 'tof.read()';
   return [code, Blockly.Python.ORDER_NONE];
 };
