@@ -4,7 +4,7 @@ import utime
 from machine import Timer
 import time
 import os
-from machine import SoftI2C,Pin
+from machine import I2C,Pin
 
 _IO_TIMEOUT = 1000
 _SYSRANGE_START = const(0x00)
@@ -112,15 +112,14 @@ class TimeoutError(RuntimeError):
 
 
 class VL53L0X:
-    def __init__(self,i2c = SoftI2C(scl=Pin(22), sda=Pin(21)), address=0x29):
+    def __init__(self,i2c = I2C(scl=Pin(22), sda=Pin(21)), address=0x29):
         machine = os.uname().machine
         if ("KidBright32" in machine) or ("KidMotor V4" in machine):
-            i2c = SoftI2C(scl=Pin(5), sda=Pin(4))
+            self.i2c = I2C(1, scl=Pin(5), sda=Pin(4), freq=400000)
         elif "Mbits" in machine:
-            i2c = SoftI2C(scl=Pin(21), sda=Pin(22))
+            self.i2c = I2C(0, scl=Pin(21), sda=Pin(22), freq=400000)
         else:
-            i2c = SoftI2C(scl=Pin(22), sda=Pin(21))
-        self.i2c = i2c
+            self.i2c = I2C(0, scl=Pin(22), sda=Pin(21), freq=400000)
         self.address = address
         self.init()
         self._started = False
