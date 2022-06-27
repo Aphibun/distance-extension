@@ -1,6 +1,6 @@
 ({
     name: "DISTANCE", // Category Name
-    description: "Distance Sensor",
+    description: "ZX-Distance Sensor",
     author: "Aphibun",
     category: "Sensors",
     version: "1.0.0",
